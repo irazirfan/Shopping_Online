@@ -25,12 +25,20 @@ Route::post('/register', 'HomeController@signup')->name('signup');
 Route::get('/contact', 'HomeController@contact')->name('contact');
 Route::get('/about', 'HomeController@about')->name('about');
 
-
 Route::group(['middleware'=>['authorize']], function(){
 
     Route::get('/home', 'HomeController@index')->name('home.index');
     Route::post('/add', 'HomeController@signup')->name('signup');
     Route::get('/logout', 'LogoutController@index')->name('logout.index');
+
+    Route::get('/addProduct', 'EmployeeController@add')->name('employee.add');
+    Route::post('/addProduct', 'EmployeeController@create');
+    Route::get('/productList', 'EmployeeController@show')->name('employee.productList');
+    Route::get('/editProduct/{sid}', 'EmployeeController@edit');
+    Route::post('/editProduct/{sid}', 'EmployeeController@update');
+    Route::get('/productDetails/{sid}', 'EmployeeController@details')->name('employee.details');
+    Route::get('/deleteProduct/{sid}', 'EmployeeController@delete');
+    Route::post('/deleteProduct/{sid}', 'EmployeeController@destroy');
 
     Route::group(['middleware'=>['role']], function(){
         Route::get('/add', 'HomeController@add');

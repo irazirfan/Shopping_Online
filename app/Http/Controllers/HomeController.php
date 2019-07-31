@@ -88,8 +88,9 @@ class HomeController extends Controller
 
     public function show(){
 
-    	$employeeList = User::where('user_type',"employee")
-    	                    ->get();
+//    	$employeeList = User::where('user_type',"employee")
+//    	                    ->get();
+        $employeeList = User::all();
     	return view('home.employeeList', ['std'=> $employeeList]);
     }
 

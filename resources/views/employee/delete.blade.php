@@ -1,10 +1,10 @@
 @include('../partials/header')
 @include('../partials/navbar')
-@include('../partials/admin_navbar')
+@include('../partials/employee_navbar')
 
 <div class="container">
     <div class="jumbotron">
-        <h2>Delete Employee!</h2>
+        <h2>Delete Product!</h2>
     </div>
 </div>
 
@@ -21,17 +21,13 @@
                 <td>{{$std['name']}}</td>
             </tr>
             <tr>
-                <td>Contact :</td>
-                <td>{{$std['contact']}}</td>
+                <td>Quantity :</td>
+                <td>{{$std['quantity']}}</td>
             </tr>
             <tr>
-                <td>Username :</td>
-                <td>{{$std['username']}}</td>
+                <td>Price :</td>
+                <td>{{$std['price']}}</td>
             </tr>
-            <td>user_type :</td>
-            <td>
-                {{$std['user_type']}}
-            </td>
         </table>
 
         <div style="padding-left: 25%">

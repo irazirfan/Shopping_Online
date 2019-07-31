@@ -1,10 +1,10 @@
 @include('../partials/header')
 @include('../partials/navbar')
-@include('../partials/admin_navbar')
+@include('../partials/employee_navbar')
 
 <div class="container">
     <div class="jumbotron">
-        <h2>Edit Employee</h2>
+        <h2>Edit Product</h2>
     </div>
 </div>
 
@@ -21,16 +21,12 @@
                 <td><input type="text" name="name" value="{{$std['name']}}"></td>
             </tr>
             <tr>
-                <td>Contact</td>
-                <td><input type="text" name="contact" value="{{$std['contact']}}"></td>
+                <td>Quantity</td>
+                <td><input type="number" name="quantity" value="{{$std['quantity']}}"></td>
             </tr>
             <tr>
-                <td>Username</td>
-                <td><input type="text" name="username" value="{{$std['username']}}"></td>
-            </tr>
-            <tr>
-                <td>Password</td>
-                <td><input type="password" name="password" value="{{$std['password']}}"></td>
+                <td>Price</td>
+                <td><input type="text" name="price" value="{{$std['price']}}"></td>
             </tr>
             <tr>
                 <td></td>
@@ -39,7 +35,6 @@
         </table>
     </div>
 </form>
-
 <div class="col-md-6" style="padding-left: 30%">
     @foreach ($errors->all() as $error)
         {{ $error }} <br>

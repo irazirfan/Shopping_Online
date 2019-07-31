@@ -10,6 +10,8 @@
     @include('../partials/navbar')
     @if(session('logged')->user_type !== "employee")
         @include('../partials/admin_navbar')
+    @else
+        @include('../partials/employee_navbar')
     @endif
 
     <div class="container">
