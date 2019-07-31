@@ -19,6 +19,36 @@ class HomeController extends Controller
         return view('home/add');
     }
 
+    public function create(Request $req){
+
+        $validator = Validator::make($req->all(), [
+
+            "name"      => "required",
+            // "email"     => "required | unique:users,email",
+            "username"     => "required",
+            "contact"     => "required",
+            "password"  => "required|min:4",
+            "user_type" => "required"
+        ]);
+
+        if($validator->fails()){
+
+            return back()
+                ->with('errors', $validator->errors())
+                ->withInput();
+        }
+
+        $user = new User();
+        $user->name = $req->name;
+        $user->contact = $req->contact;
+        $user->username = $req->username;
+        $user->password = $req->password;
+        $user->user_type = $req->user_type;
+        $user->save();
+
+        return redirect()->Route('employeeList');
+    }
+
     public function signup(Request $req){
 
         $validator = Validator::make($req->all(), [
@@ -71,13 +101,27 @@ class HomeController extends Controller
 
     public function update(Request $req, $id){
 
-    	$user = User::find($id);
+        $validator = Validator::make($req->all(), [
 
-    	$user->username = $req->uname;
-    	$user->name = $req->name;
-    	$user->dept = $req->dept;
-    	$user->cgpa = $req->cgpa;
-    	$user->save();
+            "name"      => "required",
+            // "email"     => "required | unique:users,email",
+            "username"     => "required",
+            "contact"     => "required",
+            "password"  => "required|min:4",
+        ]);
+
+        if($validator->fails()){
+
+            return back()
+                ->with('errors', $validator->errors())
+                ->withInput();
+        }
+        $user = User::find($id);
+        $user->name = $req->name;
+        $user->contact = $req->contact;
+        $user->username = $req->username;
+        $user->password = $req->password;
+        $user->save();
 
 		return redirect()->route('home.employeeList');
     }

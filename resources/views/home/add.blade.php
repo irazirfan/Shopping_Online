@@ -1,6 +1,6 @@
 @include('../partials/header')
 @include('../partials/navbar')
-
+@include('../partials/admin_navbar');
 
 <div class="container">
     <div class="jumbotron">

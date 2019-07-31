@@ -35,11 +35,12 @@ class LoginController extends Controller
         else{
         	$result = User::where('username', $req->username)
         			->where('password', $req->password)
-        			->get();
+        			->first();
 
-			if(count($result) > 0){
+			if($result != null){
 
 				$req->session()->put('user', $req->username);
+                $req->session()->put('logged', $result);
 				return redirect()->route('home.index');
 			}else{
 				$req->session()->flash('msg', 'invalid username or password');

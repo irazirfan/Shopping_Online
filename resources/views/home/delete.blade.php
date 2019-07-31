@@ -1,44 +1,41 @@
+@include('../partials/header')
+@include('../partials/navbar')
+@include('../partials/admin_navbar')
 
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Delete Student</title>
-</head>
-<body>
-
-	<h2>Delete Student</h2>
-
-	<a href="/stdList">Back</a> |
-	<a href="/logout">logout</a>
+<div class="container">
+    <div class="jumbotron">
+        <h2>Delete Employee!</h2>
+    </div>
+</div>
 
 <form method="post">
 	@csrf
-	<table border="0">
-		<tr>
-			<td>UserId :</td>
-			<td>{{$std['userId']}}</td>
-		</tr>
-		<tr>
-			<td>Username :</td>
-			<td>{{$std['username']}}</td>
-		</tr>
-		<tr>
-			<td>Name :</td>
-			<td>{{$std['name']}}</td>
-		</tr>
-		<tr>
-			<td>CGPA :</td>
-			<td>{{$std['cgpa']}}</td>
-		</tr>
-		<tr>
-			<td>DEPT :</td>
-			<td>
-				{{$std['dept']}}
-			</td>
-		</tr>
-</table>
-	<h3>Are you sure?</h3>
-	<input type="submit" name="delete" value="Confirm">
+	<div class="col-md-8" style="padding-left: 30%">
+        <table class="table table-bordered table-responsive">
+            <tr>
+                <td>id :</td>
+                <td>{{$std['id']}}</td>
+            </tr>
+            <tr>
+                <td>Name :</td>
+                <td>{{$std['name']}}</td>
+            </tr>
+            <tr>
+                <td>Contact :</td>
+                <td>{{$std['contact']}}</td>
+            </tr>
+            <tr>
+                <td>Username :</td>
+                <td>{{$std['username']}}</td>
+            </tr>
+        </table>
+
+        <div style="padding-left: 25%">
+            <h3>Are you sure?</h3>
+            <input type="submit" name="delete" value="Confirm">
+        </div>
+
+    </div>
 </form>
 </body>
 </html>

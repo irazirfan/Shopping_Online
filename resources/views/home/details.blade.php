@@ -1,41 +1,43 @@
+@include('../partials/header')
+@include('../partials/navbar')
+@include('../partials/admin_navbar')
 
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Details Student</title>
-</head>
-<body>
+<div class="container">
+    <div class="jumbotron">
+        <h2>Employee Details</h2>
+    </div>
+</div>
 
-	<h2>Details Student</h2>
-
-	<a href="/stdList">Back</a> |
-	<a href="/logout">logout</a>
-
-
-	<table border="0">
-		<tr>
-			<td>UserId :</td>
-			<td>{{$std['userId']}}</td>
-		</tr>
-		<tr>
-			<td>Username :</td>
-			<td>{{$std['username']}}</td>
-		</tr>
-		<tr>
-			<td>Name :</td>
-			<td>{{$std['name']}}</td>
-		</tr>
-		<tr>
-			<td>CGPA :</td>
-			<td>{{$std['cgpa']}}</td>
-		</tr>
-		<tr>
-			<td>DEPT :</td>
-			<td>
-				{{$std['dept']}}
-			</td>
-		</tr>
-</table>
+	<div class="col-md-8" style="padding-left: 30%">
+        <table class="table table-responsive table-bordered">
+            <tr>
+                <td>ID :</td>
+                <td>{{$std['id']}}</td>
+            </tr>
+            <tr>
+                <td>Name :</td>
+                <td>{{$std['name']}}</td>
+            </tr>
+            <tr>
+                <td>Contact :</td>
+                <td>{{$std['contact']}}</td>
+            </tr>
+            <tr>
+                <td>Username :</td>
+                <td>{{$std['username']}}</td>
+            </tr>
+            <tr>
+                <td>Password :</td>
+                <td>{{$std['password']}}</td>
+            </tr>
+            <tr>
+                <td>user_type :</td>
+                <td>
+                    {{$std['user_type']}}
+                </td>
+            </tr>
+        </table>
+    </div>
 
 </body>
 </html>
