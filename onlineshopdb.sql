@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 31, 2019 at 05:45 PM
+-- Generation Time: Aug 21, 2019 at 10:39 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.4
 
@@ -25,6 +25,29 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `carts`
+--
+
+CREATE TABLE `carts` (
+  `id` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `category` varchar(50) NOT NULL,
+  `price` int(11) NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `created_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `carts`
+--
+
+INSERT INTO `carts` (`id`, `username`, `category`, `price`, `updated_at`, `created_at`) VALUES
+(8, 'faisal', 'Salwar', 633, '2019-08-21 07:27:58', '2019-08-21 07:27:58'),
+(9, 'faisal', 'Jeans', 1099, '2019-08-21 07:28:14', '2019-08-21 07:28:14');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `products`
 --
 
@@ -33,6 +56,8 @@ CREATE TABLE `products` (
   `name` varchar(50) NOT NULL,
   `quantity` int(11) NOT NULL,
   `price` float NOT NULL,
+  `preference` varchar(50) NOT NULL,
+  `category` varchar(50) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -41,9 +66,11 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `name`, `quantity`, `price`, `created_at`, `updated_at`) VALUES
-(4, 'Blue Jeans 33\"', 7, 1099, '2019-07-31 15:11:46', '2019-07-31 15:11:46'),
-(5, 'Red T-Shirt L', 10, 300, '2019-07-31 15:14:37', '2019-07-31 15:14:37');
+INSERT INTO `products` (`id`, `name`, `quantity`, `price`, `preference`, `category`, `created_at`, `updated_at`) VALUES
+(4, 'Blue Jeans 27\"', 6, 1199, 'female', 'Jeans', '2019-07-31 15:11:46', '2019-08-21 08:00:09'),
+(5, 'Red T-Shirt L', 10, 300, 'male', 'T-shirt', '2019-07-31 15:14:37', '2019-07-31 15:14:37'),
+(6, 'Red Salwar', 2, 633, 'female', 'Salwar', '2019-08-21 00:00:00', '2019-08-21 00:00:00'),
+(7, 'Jeans Full Pant', 7, 900, 'male', 'Jeans', '2019-08-21 00:00:00', '2019-08-21 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -67,15 +94,21 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `contact`, `username`, `password`, `user_type`, `created_at`, `updated_at`) VALUES
-(4, 'Iraz Irfan', '01521318232', 'irazirfan', '1234', 'admin', '2019-07-31 06:10:49', '2019-07-31 06:10:49'),
-(5, 'Faisal Hasan', '0177654255', 'faisal', '1234', 'admin', '2019-07-31 06:46:49', '2019-07-31 06:46:49'),
-(9, 'Badhon', '0136542224', 'badhon', '1234', 'admin', '2019-07-31 10:26:54', '2019-07-31 10:26:54'),
-(11, 'Afiqur Rahman', '0168554125', 'afiqur', '1234', 'admin', '2019-07-31 10:29:30', '2019-07-31 10:29:30'),
-(17, 'Saif Ali', '0165822455', 'saif', '1234', 'customer', '2019-07-31 15:25:16', '2019-07-31 15:25:16');
+(4, 'Iraz Irfan', '01521318232', 'irazirfan', '1234', 'admin', '2019-08-21 10:26:54', '2019-08-21 08:24:43'),
+(5, 'Faisal Hasan', '0177654255', 'faisal', '1234', 'customer', '2019-08-21 10:26:54', '2019-08-21 10:26:54'),
+(9, 'Badhon', '0136542224', 'badhon', '1234', 'customer', '2019-08-21 10:26:54', '2019-08-21 10:26:54'),
+(11, 'Afiqur Rahman', '0168554125', 'afiqur', '1234', 'customer', '2019-08-21 10:26:54', '2019-08-21 10:26:54'),
+(17, 'Saif Ali', '0165822455', 'saif', '1234', 'customer', '2019-08-21 10:26:54', '2019-08-21 10:26:54');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `carts`
+--
+ALTER TABLE `carts`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `products`
@@ -94,10 +127,16 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `carts`
+--
+ALTER TABLE `carts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `users`
