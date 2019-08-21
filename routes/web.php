@@ -30,25 +30,38 @@ Route::group(['middleware'=>['authorize']], function(){
     Route::get('/home', 'HomeController@index')->name('home.index');
     Route::post('/add', 'HomeController@signup')->name('signup');
     Route::get('/logout', 'LogoutController@index')->name('logout.index');
+    Route::get('/profile', 'HomeController@profile')->name('editProfile');
+    Route::post('/profile', 'HomeController@updateProfile');
+    Route::get('/ProductList', 'CustomerController@show')->name('customer.productList');
+    Route::get('/ProductDetails/{sid}', 'CustomerController@details')->name('customer.details');
+    Route::get('/cart', 'CustomerController@cart')->name('customer.cart');
+    Route::get('/cart/{sid}', 'CustomerController@insert');
+    Route::get('/productByCategory', 'CustomerController@category')->name('customer.category');
+    Route::get('/maleProduct', 'CustomerController@maleProduct')->name('customer.maleProductList');
+    Route::get('/femaleProduct', 'CustomerController@femaleProduct')->name('customer.femaleProductList');
+    Route::get('/deleteCart/{sid}', 'CustomerController@deleteCart')->name('customer.delete');
+    Route::post('/deleteCart/{sid}', 'CustomerController@destroy')->name('customer.delete');
+    Route::get('/byCategory/{id}', 'CustomerController@byCategory')->name('customer.byCategory');
 
-    Route::get('/addProduct', 'EmployeeController@add')->name('employee.add');
-    Route::post('/addProduct', 'EmployeeController@create');
-    Route::get('/productList', 'EmployeeController@show')->name('employee.productList');
-    Route::get('/editProduct/{sid}', 'EmployeeController@edit');
-    Route::post('/editProduct/{sid}', 'EmployeeController@update');
-    Route::get('/productDetails/{sid}', 'EmployeeController@details')->name('employee.details');
-    Route::get('/deleteProduct/{sid}', 'EmployeeController@delete');
-    Route::post('/deleteProduct/{sid}', 'EmployeeController@destroy');
 
     Route::group(['middleware'=>['role']], function(){
         Route::get('/add', 'HomeController@add');
         Route::post('/add', 'HomeController@create');
-        Route::get('/employeeList', 'HomeController@show')->name('home.employeeList');
+        Route::get('/employeeList', 'HomeController@show')->name('home.adminList');
         Route::get('/edit/{sid}', 'HomeController@edit');
         Route::post('/edit/{sid}', 'HomeController@update');
         Route::get('/details/{sid}', 'HomeController@details')->name('home.details');
         Route::get('/delete/{sid}', 'HomeController@delete');
         Route::post('/delete/{sid}', 'HomeController@destroy');
+
+        Route::get('/addProduct', 'AdminController@add')->name('admin.add');
+        Route::post('/addProduct', 'AdminController@create');
+        Route::get('/productList', 'AdminController@show')->name('admin.productList');
+        Route::get('/editProduct/{sid}', 'AdminController@edit');
+        Route::post('/editProduct/{sid}', 'AdminController@update');
+        Route::get('/productDetails/{sid}', 'AdminController@details')->name('admin.details');
+        Route::get('/deleteProduct/{sid}', 'AdminController@delete');
+        Route::post('/deleteProduct/{sid}', 'AdminController@destroy');
     });
 
 });

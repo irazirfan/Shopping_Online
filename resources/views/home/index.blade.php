@@ -8,7 +8,7 @@
 
     @include('../partials/header')
     @include('../partials/navbar')
-    @if(session('logged')->user_type !== "employee")
+    @if(session('logged')->user_type === "admin")
         @include('../partials/admin_navbar')
     @else
         @include('../partials/employee_navbar')

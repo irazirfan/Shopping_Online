@@ -1,6 +1,6 @@
 @include('../partials/header')
 @include('../partials/navbar')
-@include('../partials/admin_navbar')
+@include('../partials/employee_navbar')
 
 <div class="container">
     <div class="jumbotron">
@@ -23,18 +23,9 @@
                 <td>{{$std['quantity']}}</td>
             </tr>
             <tr>
-                <td>Preference :</td>
-                <td>{{$std['preference']}}</td>
-            </tr>
-            <tr>
-                <td>Category :</td>
-                <td>{{$std['category']}}</td>
-            </tr>
-            <tr>
                 <td>Price :</td>
                 <td>{{$std['price']}}</td>
             </tr>
-
 
         </table>
     </div>

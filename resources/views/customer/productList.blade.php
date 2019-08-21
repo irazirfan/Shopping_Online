@@ -1,6 +1,6 @@
 @include('../partials/header')
 @include('../partials/navbar')
-@include('../partials/admin_navbar')
+@include('../partials/employee_navbar')
 
 <div class="col-md-8">
     <table border="1" id="example" class="table table-striped table-bordered table-condensed table-responsive">
@@ -11,34 +11,31 @@
         <td>Name</td>
         <td>Quantity</td>
         <td>Price</td>
-        <td>Created At</td>
-        <td>Updated At</td>
         <td>Action</td>
     </tr>
     </thead>
 
         <tbody>
-        @foreach($std as $value)
+        @foreach($productList as $value)
             <tr>
                 <td>{{$value['id']}}</td>
                 <td>{{$value['name']}}</td>
                 <td>{{$value['quantity']}}</td>
                 <td>{{$value['price']}}</td>
-                <td>{{$value['created_at']}}</td>
-                <td>{{$value['updated_at']}}</td>
                 <td>
-                    <a href="/editProduct/{{$value['id']}}">Edit</a> |
-                    <a href="/deleteProduct/{{$value['id']}}">Delete</a> |
-                    <a href="/productDetails/{{$value['id']}}">Details</a>
+                    <a href="/ProductDetails/{{$value['id']}}">Details</a> |
+                    <a href="/cart/{{$value['id']}}">Add to Cart</a>
                 </td>
             </tr>
         @endforeach
         </tbody>
-    </table>
+
+        </table>
 </div>
 
 </body>
 </html>
+
 
 
 

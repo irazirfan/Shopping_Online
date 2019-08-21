@@ -1,6 +1,6 @@
 @include('../partials/header')
 @include('../partials/navbar')
-@include('../partials/employee_navbar');
+@include('../partials/admin_navbar')
 
 <div class="container">
     <div class="jumbotron">
@@ -29,6 +29,20 @@
                             <div class="form-group">
                                 <input type="number" name="quantity" class="form-control input-sm"
                                        placeholder="Quantity">
+                            </div>
+                        </div>
+
+                        <div class="col-xs-6 col-sm-6 col-md-8">
+                            <div class="form-group">
+                                <input type="number" name="preference" class="form-control input-sm"
+                                       placeholder="Preference">
+                            </div>
+                        </div>
+
+                        <div class="col-xs-6 col-sm-6 col-md-8">
+                            <div class="form-group">
+                                <input type="number" name="category" class="form-control input-sm"
+                                       placeholder="Category">
                             </div>
                         </div>
 

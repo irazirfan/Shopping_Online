@@ -4,7 +4,7 @@
 
 <div class="container">
     <div class="jumbotron">
-        <h2>Add Employee!</h2>
+        <h2>Add Customer!</h2>
     </div>
 </div>
 
@@ -53,7 +53,7 @@
                             <div class="form-group">
                                 <select id="user_type" name="user_type" style="height: 100%; width: 100%;padding-top: 1px">
                                     <option value="" disabled="selected">Select User Type</option>
-                                    <option value="employee">Employee</option>
+                                    <option value="customer">Customer</option>
 {{--                                    <option value="admin">Admin</option>--}}
                                 </select>
                             </div>

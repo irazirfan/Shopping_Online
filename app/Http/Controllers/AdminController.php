@@ -7,12 +7,12 @@ use App\Product;
 use Validator;
 use Illuminate\Support\Facades\DB;
 
-class EmployeeController extends Controller
+class AdminController extends Controller
 {
 
     public function add(){
 
-        return view('employee.add');
+        return view('admin.add');
     }
 
     public function create(Request $req){
@@ -21,6 +21,8 @@ class EmployeeController extends Controller
 
             "name"      => "required",
             "quantity"     => "required",
+            "preference"     => "required",
+            "category"     => "required",
             "price"     => "required",
         ]);
 
@@ -34,29 +36,31 @@ class EmployeeController extends Controller
         $product = new Product();
         $product->name = $req->name;
         $product->quantity = $req->quantity;
+        $product->preference = $req->preference;
+        $product->category = $req->category;
         $product->price = $req->price;
         $product->save();
 
-        return redirect()->Route('employee.productList');
+        return redirect()->Route('admin.productList');
     }
 
     public function details($id){
 
         $std = Product::find($id);
 
-        return view('employee.details', ['std'=>$std]);
+        return view('admin.details', ['std'=>$std]);
     }
 
     public function show(){
 
-        $productList = Product::all();
-        return view('employee.productList', ['std'=> $productList]);
+        $std = Product::all();
+        return view('admin.productList', ['std'=> $std]);
     }
 
     public function edit($id){
 
         $std = Product::find($id);
-        return view('employee.edit', ['std'=>$std]);
+        return view('admin.edit', ['std'=>$std]);
     }
 
     public function update(Request $req, $id){
@@ -77,21 +81,23 @@ class EmployeeController extends Controller
         $product = Product::find($id);
         $product->name = $req->name;
         $product->quantity = $req->quantity;
+        $product->preference = $req->preference;
+        $product->category = $req->category;
         $product->price = $req->price;
         $product->save();
 
-        return redirect()->route('employee.productList');
+        return redirect()->route('admin.productList');
     }
     public function delete($id){
 
         $std = Product::find($id);
-        return view('employee.delete', ['std'=>$std]);
+        return view('admin.delete', ['std'=>$std]);
     }
 
     public function destroy($id){
 
         Product::destroy($id);
-        return redirect()->route('employee.productList');
+        return redirect()->route('admin.productList');
     }
 
 }

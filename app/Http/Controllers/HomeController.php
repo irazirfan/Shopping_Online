@@ -9,6 +9,23 @@ use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
+    public function profile(){
+
+        $user = User::where('username', session('user'))->first();
+
+        return view('home/editProfile', ['user'=> $user]);
+    }
+
+    public function updateProfile(Request $req){
+
+        $user = User::where('username', session('user'))->first();
+        $user->name = $req->name;
+        $user->contact = $req->contact;
+        $user->save();
+
+        return view('home/editProfile', ['user'=> $user]);
+    }
+
     public function register(){
 
     	return view('home/register');
@@ -46,7 +63,7 @@ class HomeController extends Controller
         $user->user_type = $req->user_type;
         $user->save();
 
-        return redirect()->Route('employeeList');
+        return redirect()->Route('userList');
     }
 
     public function signup(Request $req){
@@ -88,10 +105,10 @@ class HomeController extends Controller
 
     public function show(){
 
-//    	$employeeList = User::where('user_type',"employee")
+//    	$employeeList = User::where('user_type',"admin")
 //    	                    ->get();
         $employeeList = User::all();
-    	return view('home.employeeList', ['std'=> $employeeList]);
+    	return view('home.userList', ['std'=> $employeeList]);
     }
 
 	public function edit($id){
@@ -124,7 +141,7 @@ class HomeController extends Controller
         $user->password = $req->password;
         $user->save();
 
-		return redirect()->route('home.employeeList');
+		return redirect()->route('home.userList');
     }
 	public function delete($id){
 
@@ -135,7 +152,7 @@ class HomeController extends Controller
     public function destroy($id){
 
 		User::destroy($id);
-		return redirect()->route('home.employeeList');
+		return redirect()->route('home.userList');
 	}
 
     public function about(){
